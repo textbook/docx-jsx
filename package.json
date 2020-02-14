@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/textbook/docx-jsx/issues"
   },
-  "homepage": "https://github.com/textbook/docx-jsx#readme"
+  "homepage": "https://github.com/textbook/docx-jsx#readme",
+  "dependencies": {
+    "docx": "^5.0.2"
+  }
 }
