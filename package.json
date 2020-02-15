@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "JSX wrapper for docx",
   "main": "index.js",
+  "files": [
+    "index.d.ts"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "watch": "npm run test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,17 @@
     "url": "https://github.com/textbook/docx-jsx/issues"
   },
   "homepage": "https://github.com/textbook/docx-jsx#readme",
-  "dependencies": {
-    "docx": "^5.0.2"
-  }
+  "peerDependencies": {
+    "docx": "^5.0.0"
+  },
+  "devDependencies": {
+    "docx": "^5.0.2",
+    "jest": "^25.1.0"
+  },
+  "jest": {
+    "watchPathIgnorePatterns": [
+      "<rootDir>/example"
+    ]
+  },
+  "dependencies": {}
 }
