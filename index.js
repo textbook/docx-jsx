@@ -8,12 +8,15 @@ var Section = function (props) {
 function createElement(ctor, attributes) {
   var children = Array.prototype.slice.call(arguments, 2);
   if (ctor === docx.TextRun) {
-    var text = (attributes && attributes.text)
-     ? attributes.text
-     : (children[0] || "");
-    return new docx.TextRun(Object.assign({}, attributes, {
-      text: text.replace("\\t", "\t"),
+    var text = singleTextChild(children)
+      ? children[0]
+      : attributes.text;
+    return new ctor(Object.assign({}, attributes, {
+      text: (text || "").replace("\\t", "\t"),
     }));
+  }
+  if (ctor === docx.Paragraph && singleTextChild(children)) {
+    children = [createElement(docx.TextRun, null, children[0])];
   }
   if (ctor === docx.Document) {
     var doc = new ctor(attributes || undefined);
@@ -26,6 +29,10 @@ function createElement(ctor, attributes) {
   }
   return new ctor(Object.assign({ children: children }, attributes));
 };
+
+function singleTextChild(children) {
+  return children.length === 1 && typeof children[0] === 'string';
+}
 
 module.exports = Object.assign({
   Section: Section,

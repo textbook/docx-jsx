@@ -1,47 +1,18 @@
 import React from 'react';
-import { Document, Packer, Paragraph, TextRun } from 'docx';
+import { Packer } from 'docx';
 import { saveAs } from 'file-saver';
 
-import { createDocument } from "./document";
-
-const createOldDocument = ({ text }) => {
-  // Create document
-  const doc = new Document();
-
-  const tabbedText = "\tGithub is the best";
-  console.log('tabbedText', tabbedText);
-  // Documents contain sections, you can have multiple sections per document, go here to learn more about sections
-  // This simple example will only contain one section
-  doc.addSection({
-    properties: {},
-    children: [
-      new Paragraph({
-        children: [
-          new TextRun(text),
-          new TextRun({
-            text: "Foo Bar",
-            bold: true
-          }),
-          new TextRun({
-            text: tabbedText,
-            bold: true
-          })
-        ]
-      })
-    ]
-  });
-
-  return doc;
-};
+import { createNewDocument } from "./newDocument";
+import { createOldDocument } from "./oldDocument";
 
 const App = () => {
   const generateNew = () => {
-    const document = createDocument({ text: 'hello world' });
+    const document = createNewDocument();
     save(document, "test-document-docx-jsx.docx");
   };
 
   const generateOld = () => {
-    const document = createOldDocument({ text: 'hello world' });
+    const document = createOldDocument();
     save(document, "test-document-docx.docx");
   };
 
