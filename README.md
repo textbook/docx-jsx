@@ -86,7 +86,9 @@ This is still in pre-release phase, I'm working through the examples in the docs
 one by one...
 
 - [x] Get initial example working
+- [x] `Document` properties
 - [ ] Review examples to complete this list
+- [ ] Handle fragments
 
 [docx]: https://docx.js.org/#/
 [jsx]: https://reactjs.org/docs/introducing-jsx.html

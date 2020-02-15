@@ -6,16 +6,17 @@ var Section = function (props) {
 };
 
 function createElement(ctor, attributes) {
-  attributes = attributes || {};
   var children = Array.prototype.slice.call(arguments, 2);
   if (ctor === docx.TextRun) {
-    var text = attributes.text || children[0] || "";
+    var text = (attributes && attributes.text)
+     ? attributes.text
+     : (children[0] || "");
     return new docx.TextRun(Object.assign({}, attributes, {
       text: text.replace("\\t", "\t"),
     }));
   }
   if (ctor === docx.Document) {
-    var doc = new ctor();
+    var doc = new ctor(attributes || undefined);
     children.forEach(function (child) {
       if (child instanceof Section) {
         doc.addSection(child.props);

@@ -36,7 +36,7 @@ describe("createElement", () => {
       expected.addSection(sectionProps);
       const section = new DocxJsx.Section(sectionProps);
 
-      const el = DocxJsx.createElement(docx.Document, {}, section);
+      const el = DocxJsx.createElement(docx.Document, null, section);
 
       expect(el).toEqual(expected);
     });
