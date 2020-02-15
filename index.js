@@ -6,6 +6,7 @@ var Section = function (props) {
 };
 
 function createElement(ctor, attributes) {
+  attributes = attributes || {};
   var children = Array.prototype.slice.call(arguments, 2);
   if (ctor === docx.TextRun) {
     var text = attributes.text || children[0] || "";
