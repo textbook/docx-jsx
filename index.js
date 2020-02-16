@@ -16,6 +16,9 @@ function createElement(ctor, attributes) {
   if (ctor === docx.Paragraph && singleTextChild(children)) {
     children = [createElement(docx.TextRun, null, children[0])];
   }
+  if (ctor === docx.Table) {
+    return new ctor(Object.assign({ rows: children }, attributes));
+  }
   if (ctor === docx.Document) {
     var doc = new ctor(attributes || undefined);
     children.forEach(function (child) {

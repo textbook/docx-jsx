@@ -98,7 +98,7 @@ one by one...
   - [x] 1. Basic
   - [x] 2. Declarative styles
   - [x] 3. Numbering and bullet points
-  - [ ] 4. Basic table
+  - [x] 4. Basic table
   - [ ] 5. Images
   - [ ] 6. Page borders
   - [ ] 7. Landscape
