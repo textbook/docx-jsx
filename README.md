@@ -101,7 +101,7 @@ one by one...
   - [x] 4. Basic table
   - [ ] 5. Images
   - [x] 6. Page borders
-  - [ ] 7. Landscape
+  - [x] 7. Landscape
   - [ ] 8. Header & footer
   - [ ] 9. Images in header & footer
   - [ ] 10. My CV
