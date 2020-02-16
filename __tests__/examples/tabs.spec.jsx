@@ -9,8 +9,13 @@ describe('TextRun tab handling', () => {
       .toEqual(new docx.TextRun({ text: "\tHello world" }));
   });
 
-  it('works correctly in text prop', () => {
+  it('works correctly in JS text prop', () => {
     expect(<TextRun text={'\tHello world'} />)
+      .toEqual(new docx.TextRun({ text: "\tHello world" }));
+  });
+
+  it('works correctly in string text prop', () => {
+    expect(<TextRun text="\tHello world" />)
       .toEqual(new docx.TextRun({ text: "\tHello world" }));
   });
 });

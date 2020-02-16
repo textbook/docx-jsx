@@ -100,7 +100,7 @@ one by one...
   - [x] 3. Numbering and bullet points
   - [x] 4. Basic table
   - [ ] 5. Images
-  - [ ] 6. Page borders
+  - [x] 6. Page borders
   - [ ] 7. Landscape
   - [ ] 8. Header & footer
   - [ ] 9. Images in header & footer
