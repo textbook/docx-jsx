@@ -9,11 +9,9 @@ function createElement(ctor, attributes) {
   var children = Array.prototype.slice.call(arguments, 2);
   if (ctor === docx.TextRun) {
     var text = singleTextChild(children)
-      ? children[0]
+      ? children[0].replace("\\t", "\t")
       : attributes.text;
-    return new ctor(Object.assign({}, attributes, {
-      text: (text || "").replace("\\t", "\t"),
-    }));
+    return new ctor(Object.assign({}, attributes, { text: text }));
   }
   if (ctor === docx.Paragraph && singleTextChild(children)) {
     children = [createElement(docx.TextRun, null, children[0])];

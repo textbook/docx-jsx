@@ -13,13 +13,6 @@ describe("createElement", () => {
       const el = DocxJsx.createElement(docx.TextRun, { bold: true }, "Hello world");
       expect(el).toEqual(new docx.TextRun({ text: "Hello world", bold: true  }));
     });
-
-    it("handles tabbed text", () => {
-      expect(DocxJsx.createElement(docx.TextRun, { bold: true }, "\\tHello world"))
-        .toEqual(new docx.TextRun({ text: "\tHello world", bold: true  }));
-      expect(DocxJsx.createElement(docx.TextRun, { bold: true, text: "\\tHello world" }))
-        .toEqual(new docx.TextRun({ text: "\tHello world", bold: true  }));
-    });
   });
 
   describe("with a Section", () => {
