@@ -8,7 +8,7 @@ const {
   Section
 } = require("../..");
 
-it('should render the introductory example', () => {
+it('should render the landscape example', () => {
   expect(newVersion()).toEqual(oldVersion());
 });
 

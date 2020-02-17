@@ -9,7 +9,7 @@ const {
   TextRun
 } = require("../..");
 
-it('should render the introductory example', () => {
+it('should render the page borders example', () => {
   expect(newVersion()).toEqual(oldVersion());
 });
 

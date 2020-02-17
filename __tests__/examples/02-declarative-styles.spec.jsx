@@ -2,7 +2,7 @@ const docx = require("docx");
 
 const { createElement, Document, Paragraph, Section, TextRun } = require("../..");
 
-it('should render the introductory example', () => {
+it('should render the declarative styles example', () => {
   expect(newVersion()).toEqual(oldVersion());
 });
 

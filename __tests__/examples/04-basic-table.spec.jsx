@@ -10,7 +10,7 @@ const {
   TableRow
 } = require("../..");
 
-it('should render the introductory example', () => {
+it('should render the basic table example', () => {
   expect(newVersion()).toEqual(oldVersion());
 });
 
