@@ -5,30 +5,31 @@ var Section = function (props) {
   return this;
 };
 
+function createDocument(attributes, children) {
+  var doc = new docx.Document(attributes || undefined);
+  children.forEach(function (child) {
+    doc.addSection(child.props);
+  });
+  return doc;
+}
+
 function createElement(ctor, attributes) {
   var children = Array.prototype.slice.call(arguments, 2);
-  if (ctor === docx.TextRun) {
-    var text = singleTextChild(children)
-      ? children[0]
-      : attributes.text;
-    return new ctor(Object.assign({}, attributes, {
-      text: text ? text.replace("\\t", "\t") : undefined
-    }));
+  switch (ctor) {
+    case docx.Document:
+      return createDocument(attributes, children);
+    case docx.Table:
+      return new ctor(Object.assign({ rows: children }, attributes));
+    case docx.TextRun:
+      var text = singleTextChild(children)
+        ? children[0]
+        : attributes.text;
+      return new ctor(Object.assign({}, attributes, {
+        text: text ? text.replace("\\t", "\t") : undefined
+      }));
   }
   if (ctor === docx.Paragraph && singleTextChild(children)) {
     children = [createElement(docx.TextRun, null, children[0])];
-  }
-  if (ctor === docx.Table) {
-    return new ctor(Object.assign({ rows: children }, attributes));
-  }
-  if (ctor === docx.Document) {
-    var doc = new ctor(attributes || undefined);
-    children.forEach(function (child) {
-      if (child instanceof Section) {
-        doc.addSection(child.props);
-      }
-    });
-    return doc;
   }
   return new ctor(Object.assign({ children: children }, attributes));
 };
