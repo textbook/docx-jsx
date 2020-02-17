@@ -80,6 +80,20 @@ You can import the `docx` elements, like `Document` and `TextRun`, from either
 `docx` _or_ `docx-jsx`. **However** note that e.g. `Section` does not exist in
 the `docx` package, so you _must_ import that from `docx-jsx`.
 
+### API improvements
+
+In general, you can translate the `docx` API directly to JSX. However, to make
+the element structure a bit neater, the following elements can be passed as
+children:
+
+- `Section`s can be children of a `Document`, rather than calling `addSection`
+
+- `TableRow` elements can be children of a `Table`, rather than passing them as
+  the `rows` property
+
+- `Header` and `Footer` elements can be children of a `Section`, rather than
+  setting the `default` in the `headers` or `footers` prop
+
 ### ESLint
 
 You will need to disable the rule [`react/style-prop-object`][1] for files
@@ -102,7 +116,7 @@ one by one...
   - [ ] 5. Images
   - [x] 6. Page borders
   - [x] 7. Landscape
-  - [ ] 8. Header & footer
+  - [x] 8. Header & footer
   - [ ] 9. Images in header & footer
   - [ ] 10. My CV
   - [ ] ... seems like enough to be getting on with

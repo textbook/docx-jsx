@@ -34,4 +34,32 @@ describe("createElement", () => {
       expect(el).toEqual(expected);
     });
   });
+
+  describe("with headers and footers", () => {
+    it("merges the various header options", () => {
+      const default_ = new docx.Header({});
+      const first = new docx.Header({});
+      const even = new docx.Header({});
+
+      expect(createElement(Section, { headers: { first, even } }, default_))
+        .toEqual(createElement(Section, { headers: { first, even, default: default_ } }));
+      expect(createElement(Section, null, default_))
+        .toEqual(createElement(Section, { headers: { default: default_ } }));
+      expect(createElement(Section, {}, default_))
+        .toEqual(createElement(Section, { headers: { default: default_ } }));
+    });
+
+    it("merges the various footer options", () => {
+      const default_ = new docx.Footer({});
+      const first = new docx.Footer({});
+      const even = new docx.Footer({});
+
+      expect(createElement(Section, { footers: { first, even } }, default_))
+        .toEqual(createElement(Section, { footers: { first, even, default: default_ } }));
+      expect(createElement(Section, null, default_))
+        .toEqual(createElement(Section, { footers: { default: default_ } }));
+      expect(createElement(Section, {}, default_))
+        .toEqual(createElement(Section, { footers: { default: default_ } }));
+    });
+  });
 });
