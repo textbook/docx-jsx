@@ -18,19 +18,17 @@ This package allows you to write:
 /** @jsx createElement */
 import { createElement, Document, Paragraph, Section, TextRun } from "docx-jsx";
 
-const createDocument = () => {
-  return (
-    <Document>
-      <Section>
-        <Paragraph>
-          <TextRun>Hello World</TextRun>
-          <TextRun bold={true}>Foo Bar</TextRun>
-          <TextRun bold={true} text={'\tGithub is the best'}></TextRun>
-        </Paragraph>
-      </Section>
-    </Document>
-  );
-};
+const createDocument = () => (
+  <Document>
+    <Section>
+      <Paragraph>
+        <TextRun>Hello World</TextRun>
+        <TextRun bold={true}>Foo Bar</TextRun>
+        <TextRun bold={true} text={'\tGithub is the best'}></TextRun>
+      </Paragraph>
+    </Section>
+  </Document>
+);
 ```
 
 Instead of the original example:
