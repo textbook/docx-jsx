@@ -58,9 +58,7 @@ function createElement(ctor, attributes) {
       var text = singleTextChild(children)
         ? children[0]
         : attributes.text;
-      return new ctor(Object.assign({}, attributes, {
-        text: text ? text.replace("\\t", "\t") : undefined
-      }));
+      return new ctor(Object.assign({}, attributes, { text: text }));
   }
   if (ctor === docx.Paragraph && singleTextChild(children)) {
     children = [createElement(docx.TextRun, null, children[0])];

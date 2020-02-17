@@ -20,8 +20,8 @@ const createDocument = () => {
       <Section>
         <Paragraph>
           <TextRun>Hello World</TextRun>
-          <TextRun bold={true} text={"Foo Bar"}></TextRun>
-          <TextRun bold={true}>\tGithub is the best</TextRun>
+          <TextRun bold={true}>Foo Bar</TextRun>
+          <TextRun bold={true} text={'\tGithub is the best'}></TextRun>
         </Paragraph>
       </Section>
     </Document>
@@ -93,6 +93,19 @@ children:
 
 - `Header` and `Footer` elements can be children of a `Section`, rather than
   setting the `default` in the `headers` or `footers` prop
+
+### Gotchas
+
+Some special characters don't seem to be handled very well by JSX. If you need
+e.g. a tab character in a `TextRun` (see example above), use the `text` prop
+expression form, rather than the string literal form or passing the text as a
+child of the element:
+
+```jsx
+<TextRun>\tDon't do this</TextRun>
+<TextRun text="\tor this" />
+<TextRun text={'\tdo this instead'} />
+```
 
 ### ESLint
 

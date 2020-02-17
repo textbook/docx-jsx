@@ -34,8 +34,8 @@ const newVersion = () => (
     <Section>
       <Paragraph>
         <TextRun>Hello World</TextRun>
-        <TextRun bold={true} text={'Foo Bar'}></TextRun>
-        <TextRun bold={true}>\tGithub is the best</TextRun>
+        <TextRun bold={true}>Foo Bar</TextRun>
+        <TextRun bold={true} text={'\tGithub is the best'}></TextRun>
       </Paragraph>
     </Section>
   </Document>
