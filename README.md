@@ -111,7 +111,7 @@ child of the element:
 <TextRun text={'\tdo this instead'} />
 ```
 
-### ESLint
+### ESLint
 
 You will need to disable the rule [`react/style-prop-object`][1] for files
 including docx JSX, where the style prop is a string. You can do this by adding
