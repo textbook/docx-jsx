@@ -1,3 +1,10 @@
 os: linux
 dist: bionic
 language: node_js
+
+deploy:
+  provider: npm
+  email: $NPM_EMAIL_ADDRESS
+  api_key: $NPM_AUTH_TOKEN
+  on:
+    tags: true

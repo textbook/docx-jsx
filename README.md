@@ -1,5 +1,9 @@
 # docx-jsx
 
+[![License](https://img.shields.io/github/license/textbook/docx-jsx.svg)](https://github.com/textbook/docx-jsx/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/textbook/docx-jsx.svg?branch=master)](https://travis-ci.org/textbook/docx-jsx)
+[![NPM Version](https://img.shields.io/npm/v/docx-jsx.svg)](https://www.npmjs.com/package/docx-jsx)
+
 [docx] is nice. [JSX] is nice. Both together is _really_ nice.
 
 ## What is this?
