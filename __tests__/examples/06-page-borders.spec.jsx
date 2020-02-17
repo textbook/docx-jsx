@@ -57,7 +57,7 @@ const newVersion = () => (
     }}>
       <Paragraph>
         <TextRun>Hello World</TextRun>
-        <TextRun bold={true}>Foo bar</TextRun>
+        <TextRun bold={true} text="Foo bar" />
         <TextRun bold={true} text={'\tGithub is the best'} />
       </Paragraph>
       <Paragraph heading={HeadingLevel.HEADING_1}>Hello World</Paragraph>

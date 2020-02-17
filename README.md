@@ -130,13 +130,10 @@ one by one...
   - [x] 2. Declarative styles
   - [x] 3. Numbering and bullet points
   - [x] 4. Basic table
-  - [ ] 5. Images
   - [x] 6. Page borders
   - [x] 7. Landscape
   - [x] 8. Header & footer
-  - [ ] 9. Images in header & footer
-  - [ ] 10. My CV
-  - [ ] ... seems like enough to be getting on with
+  - [x] 14. Page numbers
 - [ ] Handle fragments
 
 [1]:

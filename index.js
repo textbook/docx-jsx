@@ -54,14 +54,12 @@ function createElement(ctor, attributes) {
       return createSection(attributes, children);
     case docx.Table:
       return new ctor(Object.assign({ rows: children }, attributes));
-    case docx.TextRun:
-      var text = singleTextChild(children)
-        ? children[0]
-        : attributes.text;
-      return new ctor(Object.assign({}, attributes, { text: text }));
   }
   if (ctor === docx.Paragraph && singleTextChild(children)) {
     children = [createElement(docx.TextRun, null, children[0])];
+  }
+  if (ctor === docx.TextRun && attributes && attributes.text) {
+    children = [attributes.text];
   }
   return new ctor(Object.assign({ children: children }, attributes));
 };
