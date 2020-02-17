@@ -55,8 +55,8 @@ function createElement(ctor, attributes) {
     case docx.Table:
       return new ctor(Object.assign({ rows: children }, attributes));
   }
-  if (ctor === docx.Paragraph && singleTextChild(children)) {
-    children = [createElement(docx.TextRun, null, children[0])];
+  if (ctor === docx.Paragraph) {
+    children = children.map(stringToTextRun);
   }
   if (ctor === docx.TextRun && attributes && attributes.text) {
     children = [attributes.text];
@@ -64,8 +64,10 @@ function createElement(ctor, attributes) {
   return new ctor(Object.assign({ children: children }, attributes));
 };
 
-function singleTextChild(children) {
-  return children.length === 1 && typeof children[0] === 'string';
+function stringToTextRun(child) {
+  return typeof child === 'string'
+    ? createElement(docx.TextRun, null, child)
+    : child;
 }
 
 module.exports = Object.assign({
