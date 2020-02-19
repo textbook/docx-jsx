@@ -24,7 +24,7 @@ const createDocument = () => (
       <Paragraph>
         <TextRun>Hello World</TextRun>
         <TextRun bold={true}>Foo Bar</TextRun>
-        <TextRun bold={true} text={'\tGithub is the best'}></TextRun>
+        <TextRun bold={true} text={"\tGithub is the best"}></TextRun>
       </Paragraph>
     </Section>
   </Document>
@@ -78,9 +78,14 @@ to use `docx-jsx`'s `createElement` instead of the default
 `React.createElement`. If you are using some other method to process JSX,
 consult the appropriate documentation.
 
-You can import the `docx` elements, like `Document` and `TextRun`, from either
-`docx` _or_ `docx-jsx`. **However** note that e.g. `Section` does not exist in
-the `docx` package, so you _must_ import that from `docx-jsx`.
+You can import most of the `docx` elements, like `Document` and `TextRun`, from
+either `docx` _or_ `docx-jsx`. **However** note that:
+
+- `Section` does not exist in the `docx` package; and
+- `TabStop` does exist, but is overridden in this package for functionality
+  reasons;
+
+so you _must_ import them from `docx-jsx` for correct behaviour.
 
 ### API improvements
 
@@ -95,6 +100,9 @@ children:
 
 - `Header` and `Footer` elements can be children of a `Section`, rather than
   setting the `default` in the `headers` or `footers` prop
+
+- `TabStop`s can be children of a `Paragraph`, rather than using the `tabStops`
+  prop directly
 
 ### Gotchas
 
@@ -123,6 +131,7 @@ one by one...
 
 - [x] Get initial example working
 - [x] `Document` properties examples
+- [x] `tabStops` example
 - [ ] Work through [demos]
   - [x] 1. Basic
   - [x] 2. Declarative styles

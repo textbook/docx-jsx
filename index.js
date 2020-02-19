@@ -5,6 +5,23 @@ var Section = function (props) {
   return this;
 };
 
+var TabStop = function (props) {
+  this.props = props;
+  return this;
+}
+
+function partition(array, predicate) {
+  var yes = [], no = [];
+  array.forEach(function (item) {
+    if (predicate(item)) {
+      yes.push(item);
+    } else {
+      no.push(item);
+    }
+  });
+  return {yes: yes, no: no};
+}
+
 function createDocument(attributes, children) {
   var doc = new docx.Document(attributes || undefined);
   children.forEach(function (child) {
@@ -45,18 +62,29 @@ function createSection(attributes, children) {
   );
 }
 
+function createParagraph(attributes, children) {
+  var tabStops = partition(children, function (child) {
+    return child instanceof TabStop;
+  });
+  return new docx.Paragraph(Object.assign({
+    children: tabStops.no.map(stringToTextRun),
+    tabStops: tabStops.yes.map(function (tabStop) {
+      return tabStop.props;
+    }),
+  }, attributes));
+}
+
 function createElement(ctor, attributes) {
   var children = Array.prototype.slice.call(arguments, 2);
   switch (ctor) {
     case docx.Document:
       return createDocument(attributes, children);
+    case docx.Paragraph:
+      return createParagraph(attributes, children);
     case Section:
       return createSection(attributes, children);
     case docx.Table:
       return new ctor(Object.assign({ rows: children }, attributes));
-  }
-  if (ctor === docx.Paragraph) {
-    children = children.map(stringToTextRun);
   }
   if (ctor === docx.TextRun && attributes && attributes.text) {
     children = [attributes.text];
@@ -70,7 +98,8 @@ function stringToTextRun(child) {
     : child;
 }
 
-module.exports = Object.assign({
-  Section: Section,
+module.exports = Object.assign({}, docx, {
   createElement: createElement,
-}, docx);
+  Section: Section,
+  TabStop: TabStop,
+});
