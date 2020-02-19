@@ -19,6 +19,7 @@
     "jsx"
   ],
   "author": "Jonathan Sharpe <mail@jonrshar.pe>",
+  "contributors": [],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/textbook/docx-jsx/issues"
