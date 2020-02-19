@@ -98,8 +98,9 @@ function stringToTextRun(child) {
     : child;
 }
 
-module.exports = Object.assign({}, docx, {
+module.exports = Object.assign({
   createElement: createElement,
   Section: Section,
+}, docx, {
   TabStop: TabStop,
 });
