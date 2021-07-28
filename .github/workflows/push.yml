@@ -1,0 +1,32 @@
+name: Node.js CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+        id: nvmrc
+      - uses: actions/setup-node@v2
+        with:
+          cache: npm
+          node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
+      - run: npm ci
+      - run: npm test
+  deploy:
+    runs-on: ubuntu-20.04
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+        id: nvmrc
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ steps.nvmrc.outputs.NODE_VERSION }}
+      - run: echo '//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}' > ~/.npmrc
+      - run: npm publish
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
