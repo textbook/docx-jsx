@@ -1,6 +1,6 @@
 {
   "name": "docx-jsx",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JSX wrapper for docx",
   "main": "index.js",
   "files": [
