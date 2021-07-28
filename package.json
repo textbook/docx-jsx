@@ -31,9 +31,9 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/plugin-transform-react-jsx": "^7.8.3",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^27.0.6",
     "docx": "^5.0.2",
-    "jest": "^25.1.0",
+    "jest": "^27.0.6",
     "mockdate": "^2.0.5"
   },
   "jest": {
